@@ -1,4 +1,8 @@
-
+'''
+    Author:
+    Arpit Parwal <aparwal@usc.edu>
+    Yeon-soo Park <yeonsoop@usc.edu>
+'''
 
 import numpy as np
 # Learning Rate
