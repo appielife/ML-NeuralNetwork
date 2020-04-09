@@ -3,7 +3,6 @@
     Arpit Parwal <aparwal@usc.edu>
     Yeon-soo Park <yeonsoop@usc.edu>
 '''
-
 import numpy as np
 # Learning Rate
 ALPHA = 0.1
@@ -48,6 +47,7 @@ class NeuralNetwork(object):
         self.opDim = 0
         self.X = []        
         self.layerSize = np.array  
+        self.maxIter=epoch
         if (self.trainData.ndim != 0 and self.lblTrainData.ndim !=0):                                    
             self.trainData (trainData, lblTrainData)        
     # The derivation of sigmoid function.
@@ -138,12 +138,12 @@ class NeuralNetwork(object):
         return r
     
     # Function to train the neural network.
-    def trainData(self, trainData, lblTrainData):
+    def exe_trainData(self, trainData, lblTrainData):
         # print('++++  TRAINING   ++++\n')
         self.trainData = np.array(trainData)
         self.lblTrainData = np.array(lblTrainData)
         layerSize = self.setSize(self.trainData, self.lblTrainData)        
-        max_iter = epoch
+        max_iter = self.maxIter
         self.initWeights(layerSize)        
         # Execute training.
         for _ in range (0, max_iter): 
@@ -167,7 +167,7 @@ if __name__ == '__main__':
                 labels.append([0,])  
     
     nn = NeuralNetwork(hiddenLayerSize=[100,],  alpha=0.1, epoch=1000, )
-    nn.trainData(images, labels)
+    nn.exe_trainData(images, labels)
     total = 0
     correct = 0
     _dim = np.array(labels).ndim
